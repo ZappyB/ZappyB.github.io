@@ -4,41 +4,84 @@
     <meta charset="UTF-8">
     <title>Homework 1</title>
     <link rel="stylesheet" href="Homework1styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#animationButton").click(function(){
+                // Font size and color animation together
+                $(".title h1").animate({
+                    fontSize: '60px'
+                }, {
+                    duration: 1500,
+                    step: function(now, fx) {
+                        if (fx.prop === "fontSize") {
+                            // Change color during the font size animation
+                            $(this).css('color', '#ADD8E6');
+                        }
+                    },
+                    complete: function(){
+                        $(this).animate({
+                            fontSize: '32px'
+                        }, {
+                            duration: 1500,
+                            step: function(now, fx) {
+                                if (fx.prop === "fontSize") {
+                                    // Change color back to original color during the font size animation
+                                    $(this).css('color', '#000000');
+                                }
+                            }
+                        });
+                    }
+                });
+
+                // Border around the picture animation
+                $(".body1 img").css('border', '2px solid transparent').animate({
+                    borderWidth: '2px'
+                }, {
+                    duration: 1500,
+                    start: function() {
+                        // Make the border color visible at the start of the animation
+                        $(this).css('border-color', '#000000');
+                    },
+                    complete: function() {
+                        // Delay before hiding the border
+                        $(this).delay(1000).animate({
+                            borderWidth: '0px'
+                        }, 1500);
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
-    <div class = "title">
+    <div class="title">
         <h1>CIS 128</h1>
         <H2>Mobile Web App Development</H2>
         <br>
     </div>
-    <div class = "body1">
-        <table>
-            <tr>
-                <th><img src = "IMG_4197.jpeg" alt = "Picture of Myself"> </th>
-                <th>
-                    <p>
-                        Hi, My name is Mark, I'm from the Philippines and I've
-                        been here at CSM for about a year now. I just moved here
-                        to the country like 2 years ago so I feel like I have
-                        adjusted maybe a little, still missing some of my peeps
-                        back home. Right now I am working as a fast food employee
-                        part time, and for my free time I would like to watch animes,
-                        play games and code just for fun. For my aspirations, I 
-                        aspire to be someone able to make programs that will help
-                        people from their day to day lives.
-                     </p>
-                </th>
-            </tr>
-        </table>
+    <div class="body1">
+        <img src="IMG_4197.jpeg" alt="Picture of Myself in the Grand Canyon, looking down.">
+        <p>
+            Hi, My name is Mark, I'm from the Philippines and I've
+            been here at CSM for about a year now. I just moved here
+            to the country like 2 years ago so I feel like I have
+            adjusted maybe a little, still missing some of my peeps
+            back home. Right now I am working as a fast food employee
+            part time, and for my free time I would like to watch animes,
+            play games and code just for fun. For my aspirations, I 
+            aspire to be someone able to make programs that will help
+            people from their day to day lives.
+        </p>
     </div>
     <p>
         I am attending this class because if I ever wanna make
-        a well functioning website, available for everyone to use,
-        I also have to learn how to effeciently run it on not just 
+        a well-functioning website, available for everyone to use,
+        I also have to learn how to efficiently run it on not just 
         Mac or Windows. I want it also to function and do well in
         a Smartphone.
-     </p>
-    <div class = "body2">
+    </p>
+    <div class="body2">
         <h3>Technologies for this Class</h3>
         <ul>
             <li>HTML</li>
@@ -48,9 +91,10 @@
         <br><br>
         <h3>Resources</h3>
         <ul>
-            <li><a href = "https://ARKXXIV.github.io/hw1" target = "_blank">A Website I worked on for School</a> (Fall 2023) </li>
-            <li><a href = "https://www.w3schools.com" target = "_blank">I used when I needed a refresher</a> (WW3 School)</li>
+            <li><a href="https://ARKXXIV.github.io/hw1" target="_blank">A Website I worked on for School</a> (Fall 2023) </li>
+            <li><a href="https://www.w3schools.com" target="_blank">I used when I needed a refresher</a> (W3Schools)</li>
         </ul>
     </div>
+    <button id="animationButton">Start Animation</button>
 </body>
 </html>
