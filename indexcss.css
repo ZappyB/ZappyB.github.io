@@ -1,0 +1,27 @@
+body {
+    background-color: lightblue !important;
+}
+.custom-navigation {
+    background-color: blue;
+}
+.main-title {
+    text-align: center;
+    padding: 20px;
+}
+.custom-body {
+    background-color: bisque;
+    height: 750px;
+    padding: 50px 20px 20px 20px;
+}
+.custom-color {
+    color: bisque !important;
+}
+.custom-background {
+    background-color: black ;
+}
+
+@media screen and (max-width: 600px) {
+    .custom-body {
+        text-align: center;
+    }
+}
