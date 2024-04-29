@@ -1,0 +1,69 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set body background to plain white initially */
+body {
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Main content styles */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Paragraph styles */
+p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* Select box styles */
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+select {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 200px;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 600px) {
+    main {
+        padding: 0 10px;
+    }
+    select {
+        max-width: 100%;
+    }
+}
+
+/* Background images */
+body.lightblue {
+    background-image: url('lightblue.jpg');
+    background-size: cover;
+}
+
+body.lightgold {
+    background-image: url('lightgold.jpg');
+    background-size: cover;
+}
