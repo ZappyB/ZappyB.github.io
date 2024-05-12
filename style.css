@@ -5,9 +5,9 @@
     box-sizing: border-box;
 }
 
-/* Set body background to plain white initially */
+/* Set body background and font */
 body {
-    background-color: #fff;
+    background-color: #f7f7f7;
     font-family: Arial, sans-serif;
 }
 
@@ -26,25 +26,27 @@ main {
     padding: 0 20px;
 }
 
+/* Section styles */
+section {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+/* Heading styles */
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
 /* Paragraph styles */
 p {
-    margin-bottom: 10px;
+    color: #666;
     line-height: 1.6;
-}
-
-/* Select box styles */
-label {
-    display: block;
     margin-bottom: 10px;
-}
-
-select {
-    padding: 8px;
-    font-size: 16px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    width: 100%;
-    max-width: 200px;
 }
 
 /* Media query for responsiveness */
@@ -52,18 +54,8 @@ select {
     main {
         padding: 0 10px;
     }
-    select {
-        max-width: 100%;
+    section {
+        text-align: center;
     }
 }
 
-/* Background images */
-body.lightblue {
-    background-image: url('lightblue.jpg');
-    background-size: cover;
-}
-
-body.lightgold {
-    background-image: url('lightgold.jpg');
-    background-size: cover;
-}

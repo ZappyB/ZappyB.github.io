@@ -1,60 +1,35 @@
-const CACHE_NAME = 'my-pwa-cache-v1';
+// Define a cache name
+const CACHE_NAME = 'hybrid-apps-cache-v1';
+
+// List of assets to cache
 const urlsToCache = [
     '/',
-    'index.html',
-    'style.css',
-    'app.js',
-    'lightblue.jpg',
-    'lightgold.jpg',
-    'manifest.json',
-    'twitter.256x256.png',
-    'twitter.512x512.png'
+    '/index.html',
+    '/style.css',
+    '/service-worker.js'
+    // Add other files here as needed
 ];
 
-self.addEventListener('install', function(event) {
-    // Perform installation process
+// Install the service worker
+self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-        .then(function(cache) {
-            console.log('Opened cache');
-            return cache.addAll(urlsToCache);
-        })
+            .then(cache => cache.addAll(urlsToCache))
     );
 });
 
-self.addEventListener('fetch', function(event) {
+// Fetch assets from cache or network
+self.addEventListener('fetch', event => {
     event.respondWith(
         caches.match(event.request)
-        .then(function(response) {
-            // Cache hit - return response
-            if (response) {
-                return response;
-            }
-
-            // Clone the request to make a new request
-            let fetchRequest = event.request.clone();
-
-            // Perform a network request
-            return fetch(fetchRequest).then(
-                function(response) {
-                    // Check if we received a valid response
-                    if (!response || response.status !== 200 || response.type !== 'basic') {
-                        return response;
-                    }
-
-                    // Clone the response to make a new response
-                    let responseToCache = response.clone();
-
-                    // Open the cache and put the new response in it
-                    caches.open(CACHE_NAME)
-                        .then(function(cache) {
-                            cache.put(event.request, responseToCache);
-                        });
-
-                    // Return the original response
+            .then(response => {
+                // Return cached response if found
+                if (response) {
                     return response;
                 }
-            );
-        })
+
+                // Fetch from network if not cached
+                return fetch(event.request);
+            })
     );
 });
